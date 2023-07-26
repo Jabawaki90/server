@@ -1,17 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+const notesRoute = require("./routes/notes");
 
+require("./database");
 const app = express();
+
 app.use(cors());
 
-// app.get("/api", (req, res) => {
-//   res.json({ users: "user 1" });
-//   res.send(200);
-// });
-
-app.get("/getData", (req, res) => {
-  res.send("Hello");
-});
+app.use("/api/v1/notes", notesRoute);
 
 app.listen(3001, () => {
   console.log("Hello Note project");
